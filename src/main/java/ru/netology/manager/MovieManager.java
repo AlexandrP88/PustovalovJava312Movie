@@ -3,7 +3,7 @@ package ru.netology.manager;
 import ru.netology.domain.Movie;
 
 public class MovieManager {
-    private Movie[] movies = new Movie[0];
+    private Movie[] movies = new Movie[10];
 
 
     public MovieManager() {
@@ -33,19 +33,20 @@ public class MovieManager {
 
     public Movie[] getLastFilm() {
         int resultLength;
-        if (movies.length > 9) {
-            resultLength = 9;
+        if (movies.length > 10) {
+            resultLength = 10;
         } else {
             resultLength = movies.length;
         }
         Movie[] result = new Movie[resultLength];
         for (int i = 0; i < result.length; i++) {
-            int index = resultLength - i - 1;
+            int index = movies.length - i - 1;
             result[i] = movies[index];
         }
         return result;
 
 
     }
+
 
 }

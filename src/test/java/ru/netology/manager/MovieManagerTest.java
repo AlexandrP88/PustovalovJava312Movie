@@ -10,7 +10,8 @@ class MovieManagerTest {
     @Test
     public void addTest() {
 
-        MovieManager manager = new MovieManager();
+        MovieManager manager = new MovieManager(new Movie[0]);
+
 
         Movie one = new Movie(15, "url1", "Dom", "comedy");
         Movie two = new Movie(16, "url2", "laugh", "comedy");
@@ -22,7 +23,7 @@ class MovieManagerTest {
         manager.save(three);
 
         Movie[] expected = {one, two, three};
-        Movie[] actual = {one, two, three};
+        Movie[] actual = manager.getMovies();
 
         assertArrayEquals(expected, actual);
 
@@ -34,14 +35,14 @@ class MovieManagerTest {
         Movie eleven = new Movie(15, "url1", "Dom", "comedy");
         Movie ten = new Movie(16, "url2", "laugh", "comedy");
         Movie nine = new Movie(17, "url3", "window", "comedy");
-        Movie eight = new Movie(15, "url1", "Dom", "comedy");
-        Movie seven = new Movie(16, "url2", "laugh", "comedy");
-        Movie six = new Movie(17, "url3", "window", "comedy");
-        Movie five = new Movie(15, "url1", "Dom", "comedy");
-        Movie four = new Movie(16, "url2", "laugh", "comedy");
-        Movie three = new Movie(17, "url3", "window", "comedy");
-        Movie two = new Movie(15, "url1", "Dom", "comedy");
-        Movie one = new Movie(16, "url2", "laugh", "comedy");
+        Movie eight = new Movie(18, "url1", "Dom", "comedy");
+        Movie seven = new Movie(19, "url2", "laugh", "comedy");
+        Movie six = new Movie(20, "url3", "window", "comedy");
+        Movie five = new Movie(21, "url1", "Dom", "comedy");
+        Movie four = new Movie(22, "url2", "laugh", "comedy");
+        Movie three = new Movie(23, "url3", "window", "comedy");
+        Movie two = new Movie(24, "url1", "Dom", "comedy");
+        Movie one = new Movie(25, "url2", "laugh", "comedy");
 
         manager.save(eleven);
         manager.save(ten);
@@ -55,10 +56,8 @@ class MovieManagerTest {
         manager.save(two);
         manager.save(one);
 
-        manager.getLastFilm();
-
         Movie[] expected = {one, two, three, four, five, six, seven, eight, nine, ten};
-        Movie[] actual = {one, two, three, four, five, six, seven, eight, nine, ten};
+        Movie[] actual = manager.getLastFilm();
 
         assertArrayEquals(expected, actual);
 
@@ -66,7 +65,7 @@ class MovieManagerTest {
 
     @Test
     public void getLastFilmIfLessThanTen() {
-        MovieManager manager = new MovieManager();
+        MovieManager manager = new MovieManager(new Movie[0]);
 
         Movie six = new Movie(17, "url3", "window", "comedy");
         Movie five = new Movie(15, "url1", "Dom", "comedy");
@@ -82,10 +81,8 @@ class MovieManagerTest {
         manager.save(two);
         manager.save(one);
 
-        manager.getLastFilm();
-
         Movie[] expected = {one, two, three, four, five, six};
-        Movie[] actual = {one, two, three, four, five, six};
+        Movie[] actual = manager.getLastFilm();
 
         assertArrayEquals(expected, actual);
 
