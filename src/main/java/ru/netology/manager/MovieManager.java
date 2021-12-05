@@ -3,14 +3,23 @@ package ru.netology.manager;
 import ru.netology.domain.Movie;
 
 public class MovieManager {
-    private Movie[] movies = new Movie[10];
-
+    private Movie[] movies = new Movie[0];
+    private int limitShowFilms = 10;
 
     public MovieManager() {
     }
 
-    public MovieManager(Movie[] movies) {
-        this.movies = movies;
+    public MovieManager(int limitShowFilms) {
+        this.limitShowFilms = limitShowFilms;
+    }
+
+
+    public int getLimitShowFilms() {
+        return limitShowFilms;
+    }
+
+    public void setLimitShowFilms(int limitShowFilms) {
+        this.limitShowFilms = limitShowFilms;
     }
 
     public Movie[] getMovies() {
@@ -33,8 +42,8 @@ public class MovieManager {
 
     public Movie[] getLastFilm() {
         int resultLength;
-        if (movies.length > 10) {
-            resultLength = 10;
+        if (movies.length > limitShowFilms) {
+            resultLength = limitShowFilms;
         } else {
             resultLength = movies.length;
         }
